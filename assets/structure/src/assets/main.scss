@@ -1,0 +1,434 @@
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@import "fonts/ll-brown/stylesheet.css";
+@import 'primevue/resources/themes/md-light-indigo/theme.css';
+@import './base.scss';
+
+.start-structure {
+    font-family: "Brown", sans-serif !important;
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    display: flex;
+    border: 1px #ccc solid;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+
+    &__button {
+        font-family: "Brown", sans-serif;
+        font-weight: 700;
+        height: fit-content;
+        background-color: #000;
+        border: 0px;
+        color: #fff;
+        padding: 20px 50px;
+        font-weight: 700;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+}
+
+.editor {
+    font-family: "Brown", sans-serif !important;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 10000;
+
+    &__logo {
+        font-weight: 700;
+        font-size: 1rem;
+    }
+
+    &__top-bar {
+        padding: 15px 20px;
+        background-color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #fff;
+        font-size: 1rem;
+    }
+
+    &__columns {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        height: 100%;
+    }
+
+    &__column {
+
+        &--left {
+            background-color: #1f2124;
+            width: 100%;
+            height: 100%;
+        }
+
+        &--right {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 20px;
+        }
+    }
+}
+
+.s-button {
+    border: 0px;
+    color: #fff;
+    padding: 5px 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &--transparent {
+        background-color: transparent;
+        color: #fff;
+    }
+
+    &--primary {
+        background-color: #000;
+    }
+}
+
+.drag-area {
+    border: 1px #ccc dashed;
+    padding: 20px 20px;
+    margin: 0px 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.drag-area:empty {
+    padding:1rem;
+    text-align:center;
+}
+
+.drag-area:empty:before {
+    content: "\F64D";
+    font-family: "Bootstrap-icons";
+    font-weight: 900;
+    color: var(--border-dashed);
+}
+
+.active-widget {
+    padding: 0px;
+    border: 1px transparent solid;
+    position: relative;
+
+    &:hover {
+        border: 1px #48A9A6 solid;
+
+        & > .active-widget__actions {
+            display: flex;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+    }
+
+    &__drag {
+        cursor: grab;
+    }
+
+    &__actions {
+        display: none;
+        position: absolute;
+        background: #48A9A6;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        top: -38px;
+
+        padding: 6px 10px;
+        color: white;
+        width: fit-content;
+    }
+}
+
+.s-widgets {
+    margin: 20px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    box-sizing: border-box;
+    justify-items: center;
+}
+
+.s-widget {
+    padding: 20px;
+    border: 1px #3f444b solid;
+    box-sizing: border-box;
+    font-size: 0.8rem;
+    color: #fff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    cursor: move;
+
+    &:hover {
+        background-color: #2b2c31;
+    }
+
+    & i {
+        font-size: 1.2rem;
+    }
+}
+
+.text-block {
+    &__textarea {
+        width: 100%;
+        height: fit-content;
+        border: 0px;
+        font-family: "Brown", sans-serif;
+        font-size: 1rem;
+        outline: none !important;
+    }
+}
+
+.header-block {
+    &__input {
+        width: 100%;
+        height: 100%;
+        border: 0px;
+        font-family: "Brown", sans-serif;
+        font-size: 1rem;
+        outline: none !important;
+    }
+}
+
+.columns-block {
+    &__columns {
+        display: flex;
+        gap: 20px;
+
+        justify-content: center;
+        box-sizing: border-box;
+    }
+
+    &__column {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+.twig-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #f5f5f5;
+}
+
+.s-sidebar {
+    color: #ffffff;
+
+    &__header {
+        padding: 0 20px;
+        color: #ffffff;
+        font-size: 1rem;
+    }
+
+    &__settings {
+        padding: 20px;
+    }
+
+    &__setting {
+        margin-bottom: 20px;
+    }
+
+    &__multi {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        
+        
+
+        & input {
+            width: 20px;
+        }
+    }    
+
+    &__multi-inputs {
+        display: flex;
+        gap: 10px;
+        flex-direction: row;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+
+        & button {
+            font-size: 1.2rem;
+        }
+
+        & input {
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+    }
+
+    &__single {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+
+        &--left {
+            align-items: flex-start;
+        }
+    }
+
+    &__image-link {
+        position: relative;
+
+        & img {
+            max-width: 100%;
+            cursor:pointer;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+
+    }
+
+    & input {
+        background: transparent;
+        border: 1px #3f444b solid;
+        color: #ffffff;
+        padding: 5px 5px;
+
+        &::placeholder {
+            color: transparent;
+        }
+    }
+
+    & select {
+        background: transparent;
+        border: 1px #3f444b solid;
+        color: #ffffff;
+        padding: 5px 5px;
+        
+        &:focus {
+            color: #000;
+        }
+    }
+
+    & label {
+        color: #c6c8cc;
+        font-size: 0.7rem;
+    }
+}
+
+[contenteditable] {
+    outline: 0px solid transparent;
+}
+
+.loading-logo {
+    font-family: "Brown", sans-serif;
+    color: #ffffff;
+    font-size: 2rem;
+    text-align: center;
+
+    filter: blur(4px);
+    animation: fade-in 0.8s 0.1s forwards cubic-bezier(0.11, 0, 0.5, 0);    
+}
+
+@keyframes fade-in {
+    100% {
+      opacity: 1;
+      filter: blur(0);
+    }
+}
+
+.media-modal {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    min-width: 100px;
+    min-height: 200px;
+    width: 400px;
+    max-width: calc(100% - 20px);
+    max-height: calc(100% - 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 1000;
+    min-height: 350px;
+    
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+        background-color: #000;
+        color: var(--text);
+
+        h2 {
+            margin: 0;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: white;
+        }
+    }
+
+    &__header-button {
+        padding: 5px;
+        cursor: pointer;
+        color: white;
+
+        &:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+    }
+
+    &__body {
+        padding: 20px;
+        background: #fff;
+    }
+
+    &__scrollable {
+        overflow-y: scroll;
+        max-height: 300px;
+    }
+
+    &__footer {
+        padding: 0px;
+    }
+}
+
+.media-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 1fr;
+    gap: 10px;
+}
+
+.media-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    &__image {
+        max-width: 100%;
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,5 @@
+{% block structure_widget %}
+    <div id="structureApp">
+      <structure-app name="{{ form.vars.full_name }}" value="{{ form.vars.value|default('[]') }}" id="{{ form.vars.id }}" media="{{ form.vars.ea_vars.field.customOptions.get('mediaEndpoint') }}" widgets="{{ form.vars.ea_vars.field.customOptions.get('widgets') }}">
+    </div>
+{% endblock %}

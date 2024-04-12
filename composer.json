@@ -1,0 +1,20 @@
+{
+    "name": "websystems/structure-bundle",
+    "description": "Page Builder for Symfony",
+    "type": "symfony-bundle",
+    "version": "0.0.1",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Websystems\\StructureBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Websystems\\StructureBundle\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^8.1"
+    }
+}

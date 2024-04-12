@@ -1,0 +1,1 @@
+import{o as t,c as a,m as s,t as c,a as o}from"./structure_index.js";const l={class:"twig-block"},n=o("i",{class:"bi bi-braces"},null,-1),m={__name:"TwigBlock",props:{elementData:{type:Object,default:null}},setup(e){return(r,i)=>(t(),a("div",l,[n,s(" "+c(e.elementData.block),1)]))}};export{m as default};

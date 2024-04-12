@@ -1,0 +1,1 @@
+import{o as a,c,u as s}from"./structure_index.js";const l=["src"],m={__name:"ImageBlock",props:{elementData:{type:Object,default:null}},setup(e){let t=e;return(r,n)=>(a(),c("img",{src:s(t).elementData.src,style:{"max-width":"100%"}},null,8,l))}};export{m as default};
