@@ -18,7 +18,7 @@ class TwigBlock extends Block implements BlockInterface
     private string $marginRight = "";
     private string $marginBottom = "";
     private string $marginLeft = "";
-    private string $block = 'Plans';
+    private string $block = '';
     private string $renderedHtml = '';
 
     public function resolveProperties(array $properties): void
@@ -32,12 +32,15 @@ class TwigBlock extends Block implements BlockInterface
         $this->marginRight = $properties['settings']['Margin']['right'];
         $this->marginBottom = $properties['settings']['Margin']['bottom'];
         $this->marginLeft = $properties['settings']['Margin']['left'];
+        $this->block = $properties['block'];
     }
 
     public function render(Environment $twig)
     {
         $container = $this->getContainer();
         $config = $container->getParameter('structure');
+        $widget = null;
+        
 
         if(isset($config['widgets'])) {
             foreach($config['widgets'] as $itemWidget) {
@@ -45,6 +48,10 @@ class TwigBlock extends Block implements BlockInterface
                     $widget = $container->get($itemWidget['class']);
                 }
             }
+        }
+
+        if(null === $widget) {
+            return;
         }
 
         $this->renderedHtml = $twig->render('@Structure/block/twig_block.html.twig', [
