@@ -42,7 +42,7 @@ class ButtonBlock extends Block implements BlockInterface
         $this->align = $properties['settings']['Align'];
         $this->link = $properties['link'];
         $this->label = $properties['label'];
-        $this->target = $properties['larget'];
+        $this->target = $properties['target'];
         $this->buttonclass = $properties['buttonclass'];
     }
 
