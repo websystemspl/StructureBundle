@@ -35,8 +35,7 @@ const props = defineProps({
                         'background-color:'+element.settings.Background+';',
                         'color:'+element.settings.Color+';',
                         'text-align:'+element.settings.Align+';',
-                        'max-width:'+(element.settings.Container ? '1140px;' : '100%'),
-                        'margin: auto;'
+                        'max-width:'+(element.settings.Container ? '1140px; margin: auto;' : '100%;'),
                     ]
                     ">
                       <div class="active-widget__actions">

@@ -141,6 +141,57 @@ export const widgetStore = reactive({
         },
         component: 'TwigBlock',
         block: "",
-    }
+    },
+    {
+      uid: null,
+      name: 'Button',
+      icon: 'bi bi-link',
+      settings: {
+        Padding: {
+          top: "",
+          right: "",
+          bottom: "",
+          left: "",
+        },
+        Margin: {
+          top: "",
+          right: "",
+          bottom: "",
+          left: "",
+        },
+        Background: "",
+        Color: "",
+        Align: 'left',
+      },
+      component: 'ButtonBlock',
+      label: 'Some text',
+      link: '#',
+      target: '_self',
+      buttonclass: '',
+    },    
+    {
+      uid: null,
+      name: 'Code',
+      icon: 'bi bi-code-slash',
+      settings: {
+        Padding: {
+          top: "",
+          right: "",
+          bottom: "",
+          left: "",
+        },
+        Margin: {
+          top: "",
+          right: "",
+          bottom: "",
+          left: "",
+        },
+        Background: "",
+        Color: "",
+        Align: 'left',
+      },
+      component: 'CodeBlock',
+      code: '',
+    },    
   ],
 })

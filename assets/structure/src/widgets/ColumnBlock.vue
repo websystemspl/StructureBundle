@@ -40,7 +40,8 @@ for (let i = 0; i < props.elementData.columnsCount; i++) {
                         'margin-left:'+element.settings.Margin.left+'px;',
                         'background-color:'+element.settings.Background+';',
                         'color:'+element.settings.Color+';',
-                        'text-align:'+element.settings.Align+';'
+                        'text-align:'+element.settings.Align+';',
+                        'max-width:'+(element.settings.Container ? '1140px; margin: auto;' : '100%;'),
                     ]
                     ">
                       <div class="active-widget__actions">

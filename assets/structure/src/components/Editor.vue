@@ -185,6 +185,30 @@ provide('openSettings', openSettings);
                                         </div>
                                     </div>
                                 </div>                                
+                                <div v-if="settings.hasOwnProperty('link')" class="sidebar__setting">
+                                    <div class="s-sidebar__single">
+                                        <label>Link</label>
+                                        <input type="text" v-model="settings.link" />
+                                    </div>
+                                </div>                                
+                                <div v-if="settings.hasOwnProperty('target')" class="sidebar__setting">
+                                    <div class="s-sidebar__single">
+                                        <label>Target</label>
+                                        <input type="text" v-model="settings.target" />
+                                    </div>
+                                </div>                                
+                                <div v-if="settings.hasOwnProperty('buttonclass')" class="sidebar__setting">
+                                    <div class="s-sidebar__single">
+                                        <label>Class</label>
+                                        <input type="text" v-model="settings.buttonclass" />
+                                    </div>
+                                </div>                                
+                                <div v-if="settings.hasOwnProperty('code')" class="sidebar__setting">
+                                    <div class="s-sidebar__single">
+                                        <label>Code</label>
+                                        <textarea type="text" v-model="settings.code"></textarea>
+                                    </div>
+                                </div>                                
                             </div>
                         </div>
                     </div>
@@ -213,8 +237,7 @@ provide('openSettings', openSettings);
                                 'background-color:'+element.settings.Background+';',
                                 'color:'+element.settings.Color+';',
                                 'text-align:'+element.settings.Align+';',
-                                'max-width:'+(element.settings.Container ? '1140px;' : '100%'),
-                                'margin: auto;'
+                                'max-width:'+(element.settings.Container ? '1140px; margin: auto;' : '100%;'),
                             ]
                             ">
                                 <div class="active-widget__actions">

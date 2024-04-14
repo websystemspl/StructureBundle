@@ -229,6 +229,19 @@
     background: #f5f5f5;
 }
 
+.button-block {
+
+    & a {
+        display: inline-block;
+        text-decoration: none;
+        padding: 8px 20px;
+        border: 1px #000 dashed;
+        border-radius: 5px;
+        color: #000;
+        font-weight: 600;
+    }
+}
+
 .s-sidebar {
     color: #ffffff;
 
