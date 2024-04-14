@@ -185,6 +185,12 @@ provide('openSettings', openSettings);
                                         </div>
                                     </div>
                                 </div>                                
+                                <div v-if="settings.hasOwnProperty('label')" class="sidebar__setting">
+                                    <div class="s-sidebar__single">
+                                        <label>Label</label>
+                                        <input type="text" v-model="settings.label" />
+                                    </div>
+                                </div>                                
                                 <div v-if="settings.hasOwnProperty('link')" class="sidebar__setting">
                                     <div class="s-sidebar__single">
                                         <label>Link</label>
