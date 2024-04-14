@@ -8,7 +8,6 @@ import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import '@vueup/vue-quill/dist/vue-quill.bubble.css';
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 import Editor from 'primevue/editor';
-import Dropdown from 'primevue/dropdown';
 
 defineEmits(['close']);
 
@@ -151,13 +150,13 @@ provide('openSettings', openSettings);
                                         </Editor>
                                     </div>
                                 </div>
-                                <div v-if="settings.columnsCount" class="sidebar__setting">
+                                <div v-if="settings.hasOwnProperty('columnsCount')" class="sidebar__setting">
                                     <div class="s-sidebar__single">
                                         <label>Columns</label>
                                         <input min="1" max="12" type="number" v-model="settings.columnsCount" />
                                     </div>
                                 </div>
-                                <div v-if="settings.block" class="sidebar__setting">
+                                <div v-if="settings.hasOwnProperty('block')" class="sidebar__setting">
                                     <div class="s-sidebar__single">
                                         <label>Widgets</label>
                                         <select v-model="settings.block">
@@ -177,7 +176,7 @@ provide('openSettings', openSettings);
                                         </div>
                                     </div>
                                 </div>
-                                <div v-if="settings.src" class="sidebar__setting">
+                                <div v-if="settings.hasOwnProperty('src')" class="sidebar__setting">
                                     <div class="s-sidebar__single">
                                         <label>Image</label>
                                         <div class="s-sidebar__image-link">
