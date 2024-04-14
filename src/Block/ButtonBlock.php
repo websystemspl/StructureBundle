@@ -48,7 +48,7 @@ class ButtonBlock extends Block implements BlockInterface
 
     public function render(Environment $twig)
     {
-        $this->renderedHtml = $twig->render('@Structure/block/text_block.html.twig', [
+        $this->renderedHtml = $twig->render('@Structure/block/button_block.html.twig', [
             'uid'=> $this->uid,
             'paddingTop' => $this->paddingTop,
             'paddingRight' => $this->paddingRight,

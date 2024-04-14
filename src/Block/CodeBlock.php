@@ -42,7 +42,7 @@ class CodeBlock extends Block implements BlockInterface
 
     public function render(Environment $twig)
     {
-        $this->renderedHtml = $twig->render('@Structure/block/text_block.html.twig', [
+        $this->renderedHtml = $twig->render('@Structure/block/code_block.html.twig', [
             'code' => $this->code,
             'uid'=> $this->uid,
             'paddingTop' => $this->paddingTop,
