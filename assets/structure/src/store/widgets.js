@@ -25,6 +25,7 @@ export const widgetStore = reactive({
         },
         component: 'TextBlock',
         content: 'This is a text block',
+        editor: true,
     },
     {
         uid: null,
@@ -49,6 +50,7 @@ export const widgetStore = reactive({
         },
         component: 'HeaderBlock',
         content: 'This is a header block',
+        editor: false,
         style: 'h1',
     },
     {
@@ -73,6 +75,7 @@ export const widgetStore = reactive({
         component: 'ColumnBlock',
         columns: [],
         columnsCount: 2,
+        alignVertical: 'start',
     },
     {
         uid: null,

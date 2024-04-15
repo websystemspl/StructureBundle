@@ -24,6 +24,10 @@ let props = defineProps({
   widgets: {
     type: String,
   },
+  save: {
+    type: String,
+    default: null,
+  },
 });
 
 contentStore.content = JSON.parse(props.value)
@@ -41,6 +45,7 @@ const startApp = () => {
 
 provide('mediaEndpoint', props.media);
 provide('widgets', JSON.parse(props.widgets));
+provide('save', JSON.parse(props.save));
 
 watch(() => contentStore.content, (newContent) => {
   element.value = JSON.stringify(newContent);

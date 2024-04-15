@@ -8,7 +8,7 @@ export const contentStore = reactive({
   createBlock(element)
   {
       return markRaw(defineAsyncComponent(() => {
-        return import(`./../widgets/${element}.vue`)
+        return import(`./../blocks/${element}.vue`)
       }))
   },  
 

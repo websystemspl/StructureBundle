@@ -20,7 +20,7 @@ for (let i = 0; i < props.elementData.columnsCount; i++) {
 
 <template>
     <div class="columns-block">
-      <div class="columns-block__columns">
+      <div class="columns-block__columns" :style="'align-items:' + (props.elementData.alignVertical)">
         <div v-for="col in props.elementData.columnsCount" :key="col - 1" class="columns-block__column">
           <draggable
               class="drag-area"
