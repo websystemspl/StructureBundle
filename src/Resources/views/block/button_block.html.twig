@@ -1,15 +1,15 @@
 <div class="s-button-block {{ uid }}" style="
-    {% if paddingTop %} padding-top: {{ paddingTop }}px; {% endif %}
-    {% if paddingRight %} padding-right: {{ paddingRight }}px; {% endif %}
-    {% if paddingBottom %} padding-bottom: {{ paddingBottom }}px; {% endif %}
-    {% if paddingLeft %} padding-left: {{ paddingLeft }}px; {% endif %}
-    {% if marginTop %} margin-top: {{ marginTop }}px; {% endif %}
-    {% if marginRight %} margin-right: {{ marginRight }}px; {% endif %}
-    {% if marginBottom %} margin-bottom: {{ marginBottom }}px; {% endif %}
-    {% if marginLeft %} margin-left: {{ marginLeft }}px; {% endif %}
-    {% if background %} background-color: {{ background }}; {% endif %}
-    {% if color %} color: {{ color }}; {% endif %}
-    {% if align %} text-align: {{ align }}; {% endif %}
+    {% if paddingTop != "" %} padding-top: {{ paddingTop }}px; {% endif %}
+    {% if paddingRight != "" %} padding-right: {{ paddingRight }}px; {% endif %}
+    {% if paddingBottom != "" %} padding-bottom: {{ paddingBottom }}px; {% endif %}
+    {% if paddingLeft != "" %} padding-left: {{ paddingLeft }}px; {% endif %}
+    {% if marginTop != "" %} margin-top: {{ marginTop }}px; {% endif %}
+    {% if marginRight != "" %} margin-right: {{ marginRight }}px; {% endif %}
+    {% if marginBottom != "" %} margin-bottom: {{ marginBottom }}px; {% endif %}
+    {% if marginLeft != "" %} margin-left: {{ marginLeft }}px; {% endif %}
+    {% if background != "" %} background-color: {{ background }}; {% endif %}
+    {% if color != "" %} color: {{ color }}; {% endif %}
+    {% if align != "" %} text-align: {{ align }}; {% endif %}
 ">
     <a href="{{ link }}" target="{{ target }}" class="{{ buttonclass }}">{{ label }}</a>
 </div>
