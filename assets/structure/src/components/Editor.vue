@@ -48,7 +48,7 @@ function saveData()
     const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ entity: save.entity, id: save.id, content: contentStore.content})
+        body: JSON.stringify({ entity: save.entity, id: save.id, content: contentStore.content, property: save.property})
     };
 
     fetch(save.url, requestOptions).then(response => response.json()).then(data => {
