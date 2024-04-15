@@ -2,7 +2,7 @@
 
 @import "bootstrap-icons/font/bootstrap-icons.css";
 @import "fonts/ll-brown/stylesheet.css";
-@import "./themes/material/material-dark/compact/indigo/theme.scss";
+//@import "./themes/material/material-dark/compact/indigo/theme.scss";
 
 @import './base';
 @import './editor';
@@ -20,8 +20,8 @@
 @import './prime';
 
 :root {
-    font-size: 14px;
-    color: #666;
+    // font-size: 14px;
+    // color: #666;
 }
 
 .start-structure {
@@ -73,6 +73,7 @@
     padding: 0px;
     border: 1px transparent solid;
     position: relative;
+    color: #000;
 
     &:hover {
         border: 1px #48A9A6 solid;
@@ -167,12 +168,12 @@
     &:before {
         position: absolute;
         left: -5px;
-        content: "\F695";
+        content: "\F695" !important;
         background: #fff;
         padding: 5px;
         border-radius: 20px;
         font-family: "Bootstrap-icons";
-        color: var(--border-dashed);    content: "\F695";
+        color: #000;
         z-index: 0;
     }
 }

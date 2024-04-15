@@ -68,4 +68,3 @@ watch(() => contentStore.content, (newContent) => {
     <Editor v-if="showEditor" @close="(e) => {showEditor = false}" />
   </Teleport>
 </template>
-
