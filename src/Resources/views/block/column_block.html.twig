@@ -9,6 +9,7 @@
     {% if marginLeft != "" %} margin-left: {{ marginLeft }}px; {% endif %}
     {% if background != "" %} background-color: {{ background }}; {% endif %}
     grid-template-columns: repeat({{ columnsCount }}, 1fr);
+    align-items: {{ alignVertical }};
 ">
     {% for column in columns %}
         <div class="s-column-block__column">

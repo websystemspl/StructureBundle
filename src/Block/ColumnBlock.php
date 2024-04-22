@@ -20,6 +20,8 @@ class ColumnBlock extends Block implements BlockInterface
     private string $marginLeft = "";
     private string $background = "";  
     private int $columnsCount = 1;
+    
+    private string $alignVertical = "start";
     private string $renderedHtml = '';
     public function render(Environment $twig)
     {
@@ -35,7 +37,9 @@ class ColumnBlock extends Block implements BlockInterface
             'marginBottom' => $this->marginBottom,
             'marginLeft' => $this->marginLeft,
             'background' => $this->background,       
-            'columnsCount' => $this->columnsCount,       
+            'columnsCount' => $this->columnsCount,     
+            'alignVertical' => $this->alignVertical,     
+
         ]);
     }   
 
@@ -52,6 +56,7 @@ class ColumnBlock extends Block implements BlockInterface
         $this->marginLeft = $properties['settings']['Margin']['left'];
         $this->background = $properties['settings']['Background'];
         $this->columnsCount = $properties['columnsCount'];
+        $this->alignVertical = $properties['alignVertical'];
     }    
 
     public function addColumn($column): void
@@ -160,5 +165,15 @@ class ColumnBlock extends Block implements BlockInterface
         $this->columnsCount = $columnsCount;
 
         return $this;
+    }
+
+    /**
+     * Get the value of alignVertical
+     *
+     * @return string
+     */
+    public function getAlignVertical(): string
+    {
+        return $this->alignVertical;
     }
 }
