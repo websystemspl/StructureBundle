@@ -10,6 +10,7 @@
     {% if background != "" %} background-color: {{ background }}; {% endif %}
     {% if color != "" %} color: {{ color }}; {% endif %}
     {% if align != "" %} text-align: {{ align }}; {% endif %}
+    {% if fontSize != "" %} font-size: {{ fontSize }}{{ fontSizeType }}; {% endif %}
 ">
     <a href="{{ link }}" target="{{ target }}" class="{{ buttonclass }}">{{ label }}</a>
 </div>

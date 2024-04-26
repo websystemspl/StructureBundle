@@ -15,7 +15,22 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="section-block">
+    <div class="section-block" :style="[
+        'padding-top:'+props.elementData.settings.Padding.top+'px;',
+        'padding-right:'+props.elementData.settings.Padding.right+'px;',
+        'padding-bottom:'+props.elementData.settings.Padding.bottom+'px;',
+        'padding-left:'+props.elementData.settings.Padding.left+'px;',
+        'margin-top:'+props.elementData.settings.Margin.top+'px;',
+        'margin-right:'+props.elementData.settings.Margin.right+'px;',
+        'margin-bottom:'+props.elementData.settings.Margin.bottom+'px;',
+        'margin-left:'+props.elementData.settings.Margin.left+'px;',
+        'background-color:'+props.elementData.settings.Background+';',
+        'color:'+props.elementData.settings.Color+';',
+        'text-align:'+props.elementData.settings.Align+';',
+        'max-width:'+(props.elementData.settings.Container ? '1140px; margin: auto;' : '100%;'),
+        (props.elementData.settings.FontSize) ? 'font-size:'+props.elementData.settings.FontSize+props.elementData.settings.FontSizeType.code+';' : '',
+      ]
+    ">
           <draggable
               class="drag-area"
               :list="props.elementData.blocks"
@@ -23,28 +38,14 @@ const props = defineProps({
               itemKey="uid"
           >
               <template #item="{ element }">
-                    <div class="active-widget" :style="[
-                        'padding-top:'+element.settings.Padding.top+'px;',
-                        'padding-right:'+element.settings.Padding.right+'px;',
-                        'padding-bottom:'+element.settings.Padding.bottom+'px;',
-                        'padding-left:'+element.settings.Padding.left+'px;',
-                        'margin-top:'+element.settings.Margin.top+'px;',
-                        'margin-right:'+element.settings.Margin.right+'px;',
-                        'margin-bottom:'+element.settings.Margin.bottom+'px;',
-                        'margin-left:'+element.settings.Margin.left+'px;',
-                        'background-color:'+element.settings.Background+';',
-                        'color:'+element.settings.Color+';',
-                        'text-align:'+element.settings.Align+';',
-                        'max-width:'+(element.settings.Container ? '1140px; margin: auto;' : '100%;'),
-                    ]
-                    ">
+                    <div class="active-widget">
                       <div class="active-widget__actions">
                           <div class="active-widget__drag"><i class="bi bi-grip-horizontal"></i></div>
                           <button type="button" class="s-button s-button--transparent" @click="openSettings(element)"><i class="bi bi-gear-fill"></i></button>
                           <button type="button" class="s-button s-button--transparent"><i class="bi bi-copy"></i></button>
                           <button type="button" class="s-button s-button--transparent" @click="contentStore.removeElement(element.uid)"><i class="bi bi-x-lg"></i></button>
                       </div>
-                      <component :elementData="element" :is="contentStore.createBlock(element.component)"></component>   
+                    <component :elementData="element" :is="contentStore.createBlock(element.component)"></component>    
                   </div>
               </template>
           </draggable> 

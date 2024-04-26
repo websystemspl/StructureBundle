@@ -25,6 +25,9 @@ class ButtonBlock extends Block implements BlockInterface
     private string $target = '_self';
     private string $buttonclass = '';
     private string $renderedHtml = '';
+    private string $fontSize = '';
+    private string $fontSizeType = '';
+    
 
     public function resolveProperties(array $properties): void
     {
@@ -44,6 +47,8 @@ class ButtonBlock extends Block implements BlockInterface
         $this->label = $properties['label'];
         $this->target = $properties['target'];
         $this->buttonclass = $properties['buttonclass'];
+        $this->fontSize = $properties['settings']['FontSize'];
+        $this->fontSizeType = $properties['settings']['FontSizeType']['code'];
     }
 
     public function render(Environment $twig)
@@ -64,7 +69,9 @@ class ButtonBlock extends Block implements BlockInterface
             'link' => $this->link,
             'label' => $this->label,
             'target' => $this->target,
-            'buttonclass' => $this->buttonclass
+            'buttonclass' => $this->buttonclass,
+            'fontSize' => $this->fontSize,
+            'fontSizeType' => $this->fontSizeType
         ]);
     }
 
@@ -190,5 +197,25 @@ class ButtonBlock extends Block implements BlockInterface
     public function getButtonclass(): string
     {
         return $this->buttonclass;
+    }
+
+    /**
+     * Get the value of fontSize
+     *
+     * @return string
+     */
+    public function getFontSize(): string
+    {
+        return $this->fontSize;
+    }
+
+    /**
+     * Get the value of fontSizeType
+     *
+     * @return string
+     */
+    public function getFontSizeType(): string
+    {
+        return $this->fontSizeType;
     }
 }

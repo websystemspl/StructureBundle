@@ -14,6 +14,7 @@ import TabPanel from 'primevue/tabpanel';
 import Moveable from "vue3-moveable";
 import InputText from 'primevue/inputtext';
 import Image from 'primevue/image';
+import Dropdown from 'primevue/dropdown';
 
 defineEmits(['close']);
 
@@ -25,6 +26,12 @@ const save = inject('save');
 const sidebar = ref();
 const editor_column = ref();
 const saveLoading = ref(false);
+
+const fontSizeTypes = ref([
+    { name: 'px', code: 'px' },
+    { name: 'rem', code: 'rem' },
+    { name: '%', code: '%' },
+]);
 
 function openSettings(element)
 {
@@ -122,13 +129,13 @@ provide('openSettings', openSettings);
                                                 <InputText v-if="settings.editor === false" type="text" v-model="settings.content" />
                                             </div>
                                         </div>                                        
-                                        <div v-if="settings.hasOwnProperty('columnsCount')" class="sidebar__setting">
+                                        <div v-if="settings.hasOwnProperty('columnsCount')" class="s-sidebar__setting">
                                             <div class="s-sidebar__single">
                                                 <label>Columns</label>
-                                                <input min="1" max="12" type="number" v-model="settings.columnsCount" />
+                                                <InputText min="1" max="12" type="number" v-model="settings.columnsCount" />
                                             </div>
                                         </div>
-                                        <div v-if="settings.hasOwnProperty('block')" class="sidebar__setting">
+                                        <div v-if="settings.hasOwnProperty('block')" class="s-sidebar__setting">
                                             <div class="s-sidebar__single">
                                                 <label>Widgets</label>
                                                 <select v-model="settings.block">
@@ -158,12 +165,10 @@ provide('openSettings', openSettings);
                                                 </div>
                                             </div>
                                         </div>
-                                        <div v-if="settings.hasOwnProperty('src')" class="sidebar__setting">
+                                        <div v-if="settings.hasOwnProperty('src')" class="s-sidebar__setting">
                                             <div class="s-sidebar__single">
                                                 <label>Image</label>
                                                 <div class="s-sidebar__image-link">
-                                                    <!-- <img :src="settings.src" @click="openMedia(settings)" /> -->
-
                                                     <Image alt="Image" preview @click="openMedia(settings)">
                                                         <template #indicatoricon>
                                                             <i class="bi bi-folder2-open"></i>
@@ -172,36 +177,34 @@ provide('openSettings', openSettings);
                                                             <img :src="settings.src" alt="image" />
                                                         </template>
                                                     </Image>
-
-
                                                 </div>
                                             </div>
                                         </div>                                
-                                        <div v-if="settings.hasOwnProperty('label')" class="sidebar__setting">
+                                        <div v-if="settings.hasOwnProperty('label')" class="s-sidebar__setting">
                                             <div class="s-sidebar__single">
                                                 <label>Label</label>
                                                 <input type="text" v-model="settings.label" />
                                             </div>
                                         </div>                                
-                                        <div v-if="settings.hasOwnProperty('link')" class="sidebar__setting">
+                                        <div v-if="settings.hasOwnProperty('link')" class="s-sidebar__setting">
                                             <div class="s-sidebar__single">
                                                 <label>Link</label>
                                                 <input type="text" v-model="settings.link" />
                                             </div>
                                         </div>                                
-                                        <div v-if="settings.hasOwnProperty('target')" class="sidebar__setting">
+                                        <div v-if="settings.hasOwnProperty('target')" class="s-sidebar__setting">
                                             <div class="s-sidebar__single">
                                                 <label>Target</label>
                                                 <input type="text" v-model="settings.target" />
                                             </div>
                                         </div>                                
-                                        <div v-if="settings.hasOwnProperty('buttonclass')" class="sidebar__setting">
+                                        <div v-if="settings.hasOwnProperty('buttonclass')" class="s-sidebar__setting">
                                             <div class="s-sidebar__single">
                                                 <label>Class</label>
                                                 <input type="text" v-model="settings.buttonclass" />
                                             </div>
                                         </div>                                
-                                        <div v-if="settings.hasOwnProperty('code')" class="sidebar__setting">
+                                        <div v-if="settings.hasOwnProperty('code')" class="s-sidebar__setting">
                                             <div class="s-sidebar__single">
                                                 <label>Code</label>
                                                 <textarea type="text" v-model="settings.code"></textarea>
@@ -257,6 +260,19 @@ provide('openSettings', openSettings);
                                                     </div>                                            
                                                 </div>
                                             </div>
+                                            <div class="s-sidebar__multi" v-else-if="index === 'FontSize'">
+                                                <label>{{ index }}</label>
+                                                <div class="s-sidebar__multi-inputs">
+                                                    <div>
+                                                        <InputText type="number" v-model="settings.settings[index]" />
+                                                        <label></label>
+                                                    </div>
+                                                    <div>
+                                                        <Dropdown v-model="settings.settings['FontSizeType']" :options="fontSizeTypes" optionLabel="name" placeholder="" />
+                                                        <label></label>
+                                                    </div>                                            
+                                                </div>
+                                            </div>
                                             <div class="s-sidebar__multi" v-else-if="index === 'Align'">
                                                 <label>{{ index }}</label>
                                                 <div class="s-sidebar__multi-inputs">
@@ -307,21 +323,7 @@ provide('openSettings', openSettings);
                         handle=".active-widget__drag"
                     >
                         <template #item="{ element }">
-                            <div class="active-widget" :style="[
-                                'padding-top:'+element.settings.Padding.top+'px;',
-                                'padding-right:'+element.settings.Padding.right+'px;',
-                                'padding-bottom:'+element.settings.Padding.bottom+'px;',
-                                'padding-left:'+element.settings.Padding.left+'px;',
-                                'margin-top:'+element.settings.Margin.top+'px;',
-                                'margin-right:'+element.settings.Margin.right+'px;',
-                                'margin-bottom:'+element.settings.Margin.bottom+'px;',
-                                'margin-left:'+element.settings.Margin.left+'px;',
-                                'background-color:'+element.settings.Background+';',
-                                'color:'+element.settings.Color+';',
-                                'text-align:'+element.settings.Align+';',
-                                'max-width:'+(element.settings.Container ? '1140px; margin: auto;' : '100%;'),
-                            ]
-                            ">
+                            <div class="active-widget">
                                 <div class="active-widget__actions">
                                     <div class="active-widget__drag"><i class="bi bi-grip-horizontal"></i></div>
                                     <button type="button" class="s-button s-button--transparent" @click="openSettings(element)"><i class="bi bi-gear-fill"></i></button>

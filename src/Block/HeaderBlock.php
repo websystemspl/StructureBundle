@@ -23,6 +23,8 @@ class HeaderBlock extends Block implements BlockInterface
     private string $content = '';
     private string $style = 'h1';
     private string $renderedHtml = '';
+    private string $fontSize = '';
+    private string $fontSizeType = '';    
     public function render(Environment $twig)
     {
         $this->renderedHtml = $twig->render('@Structure/block/header_block.html.twig', [
@@ -39,7 +41,9 @@ class HeaderBlock extends Block implements BlockInterface
             'background' => $this->background,
             'color' => $this->color,
             'align' => $this->align,     
-            'style' => $this->style,       
+            'style' => $this->style,    
+            'fontSize' => $this->fontSize,
+            'fontSizeType' => $this->fontSizeType, 
         ]);
     }   
 
@@ -59,6 +63,8 @@ class HeaderBlock extends Block implements BlockInterface
         $this->align = $properties['settings']['Align'];
         $this->content = $properties['content'];
         $this->style = $properties['style'];
+        $this->fontSize = $properties['settings']['FontSize'];
+        $this->fontSizeType = $properties['settings']['FontSizeType']['code'];
     }
 
     public function getUid(): ?string
@@ -153,5 +159,25 @@ class HeaderBlock extends Block implements BlockInterface
         $this->renderedHtml = $renderedHtml;
 
         return $this;
+    }
+
+    /**
+     * Get the value of fontSize
+     *
+     * @return string
+     */
+    public function getFontSize(): string
+    {
+        return $this->fontSize;
+    }
+
+    /**
+     * Get the value of fontSizeType
+     *
+     * @return string
+     */
+    public function getFontSizeType(): string
+    {
+        return $this->fontSizeType;
     }
 }

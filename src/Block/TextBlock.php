@@ -22,6 +22,8 @@ class TextBlock extends Block implements BlockInterface
     private string $align = 'left';
     private string $content = '';
     private string $renderedHtml = '';
+    private string $fontSize = '';
+    private string $fontSizeType = '';    
 
     public function resolveProperties(array $properties): void
     {
@@ -38,6 +40,8 @@ class TextBlock extends Block implements BlockInterface
         $this->color = $properties['settings']['Color'];
         $this->align = $properties['settings']['Align'];
         $this->content = $properties['content'];
+        $this->fontSize = $properties['settings']['FontSize'];
+        $this->fontSizeType = $properties['settings']['FontSizeType']['code'];
     }
 
     public function render(Environment $twig)
@@ -56,6 +60,8 @@ class TextBlock extends Block implements BlockInterface
             'background' => $this->background,
             'color' => $this->color,
             'align' => $this->align,
+            'fontSize' => $this->fontSize,
+            'fontSizeType' => $this->fontSizeType,
         ]);
     }
 
@@ -146,5 +152,25 @@ class TextBlock extends Block implements BlockInterface
         $this->renderedHtml = $renderedHtml;
 
         return $this;
+    }
+
+    /**
+     * Get the value of fontSize
+     *
+     * @return string
+     */
+    public function getFontSize(): string
+    {
+        return $this->fontSize;
+    }
+
+    /**
+     * Get the value of fontSizeType
+     *
+     * @return string
+     */
+    public function getFontSizeType(): string
+    {
+        return $this->fontSizeType;
     }
 }
