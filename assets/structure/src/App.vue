@@ -59,7 +59,7 @@ watch(() => contentStore.content, (newContent) => {
     <button type="button" class="start-structure__button" @click="startApp()">Start Structure</button>
   </div>
 
-  <loading :active="isLoading" :can-cancel="false" :is-full-page="true" background-color="#000" opacity="1" transition="fade">
+  <loading :active="isLoading" :can-cancel="false" :is-full-page="true" background-color="#000" :opacity="1" transition="fade">
     <template #default>
       <div class="loading-logo">Structure.</div>
     </template>

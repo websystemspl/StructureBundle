@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, inject } from 'vue';
 
 let props = defineProps({
   elementData: {
@@ -8,10 +8,12 @@ let props = defineProps({
   },
 });
 
+const openSettings = inject('openSettings');
 </script>
 
 <template>
     <div class="button-block" 
+      @click="openSettings(props.elementData)"
       :style="[
           'text-align:'+props.elementData.settings.Align+';',
         ]

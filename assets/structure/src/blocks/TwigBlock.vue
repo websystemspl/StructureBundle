@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, inject } from 'vue';
 
 let props = defineProps({
   elementData: {
@@ -8,10 +8,11 @@ let props = defineProps({
   },
 });
 
+const openSettings = inject('openSettings');
 </script>
 
 <template>
-  <div class="twig-block" :style="[
+  <div class="twig-block" @click="openSettings(props.elementData)" :style="[
         'padding-top:'+props.elementData.settings.Padding.top+'px;',
         'padding-right:'+props.elementData.settings.Padding.right+'px;',
         'padding-bottom:'+props.elementData.settings.Padding.bottom+'px;',

@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, inject } from 'vue';
 
 let props = defineProps({
   elementData: {
@@ -7,10 +7,12 @@ let props = defineProps({
     default: null,
   },
 });
+
+const openSettings = inject('openSettings');
 </script>
 
 <template>
-  <div :style="[
+  <div @click="openSettings(props.elementData)" :style="[
         'padding-top:'+props.elementData.settings.Padding.top+'px;',
         'padding-right:'+props.elementData.settings.Padding.right+'px;',
         'padding-bottom:'+props.elementData.settings.Padding.bottom+'px;',

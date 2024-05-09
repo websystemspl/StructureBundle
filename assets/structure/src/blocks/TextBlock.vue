@@ -28,6 +28,7 @@ const openSettings = inject('openSettings');
         'text-align:'+props.elementData.settings.Align+';',
         'max-width:'+(props.elementData.settings.Container ? '1140px; margin: auto;' : '100%;'),
         (props.elementData.settings.FontSize) ? 'font-size:'+props.elementData.settings.FontSize+props.elementData.settings.FontSizeType.code+';' : '',
+        (props.elementData.settings.LineHeight) ? 'line-height:'+props.elementData.settings.LineHeight+props.elementData.settings.LineHeightType.code+';' : '',
       ]
     " tag="div" :contenteditable="true" v-model="props.elementData.content" :no-nl="false" :no-html="false" />
     </div>
