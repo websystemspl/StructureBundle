@@ -9,22 +9,22 @@ use Websystems\StructureBundle\BlockInterface;
 class TextBlock extends Block implements BlockInterface
 {
     private ?string $uid = null;
-    private string $paddingTop = "";
-    private string $paddingRight = "";
-    private string $paddingBottom = "";
-    private string $paddingLeft = "";
-    private string $marginTop = "";
-    private string $marginRight = "";
-    private string $marginBottom = "";
-    private string $marginLeft = "";
+    private ?string $paddingTop = "";
+    private ?string $paddingRight = "";
+    private ?string $paddingBottom = "";
+    private ?string $paddingLeft = "";
+    private ?string $marginTop = "";
+    private ?string $marginRight = "";
+    private ?string $marginBottom = "";
+    private ?string $marginLeft = "";
     private string $background = "";
     private string $color = "";
     private string $align = 'left';
     private string $content = '';
     private string $renderedHtml = '';
-    private string $fontSize = '';
+    private ?string $fontSize = '';
     private string $fontSizeType = '';    
-    private string $lineHeight = '';
+    private ?string $lineHeight = '';
     private string $lineHeightType = '';    
 
     public function resolveProperties(array $properties): void
@@ -77,42 +77,42 @@ class TextBlock extends Block implements BlockInterface
         return $this->uid;
     }
 
-    public function getPaddingTop(): string
+    public function getPaddingTop(): ?string
     {
         return $this->paddingTop;
     }
 
-    public function getPaddingRight(): string
+    public function getPaddingRight(): ?string
     {
         return $this->paddingRight;
     }
 
-    public function getPaddingBottom(): string
+    public function getPaddingBottom(): ?string
     {
         return $this->paddingBottom;
     }
 
-    public function getPaddingLeft(): string
+    public function getPaddingLeft(): ?string
     {
         return $this->paddingLeft;
     }
 
-    public function getMarginTop(): string
+    public function getMarginTop(): ?string
     {
         return $this->marginTop;
     }
 
-    public function getMarginRight(): string
+    public function getMarginRight(): ?string
     {
         return $this->marginRight;
     }
 
-    public function getMarginBottom(): string
+    public function getMarginBottom(): ?string
     {
         return $this->marginBottom;
     }   
 
-    public function getMarginLeft(): string
+    public function getMarginLeft(): ?string
     {
         return $this->marginLeft;
     }
@@ -166,7 +166,7 @@ class TextBlock extends Block implements BlockInterface
      *
      * @return string
      */
-    public function getFontSize(): string
+    public function getFontSize(): ?string
     {
         return $this->fontSize;
     }
@@ -186,7 +186,7 @@ class TextBlock extends Block implements BlockInterface
      *
      * @return string
      */
-    public function getLineHeight(): string
+    public function getLineHeight(): ?string
     {
         return $this->lineHeight;
     }
