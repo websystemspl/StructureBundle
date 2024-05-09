@@ -29,7 +29,6 @@ class TextBlock extends Block implements BlockInterface
 
     public function resolveProperties(array $properties): void
     {
-        dump($properties);
         $this->uid = $properties['uid'];
         $this->paddingTop = $properties['settings']['Padding']['top'];
         $this->paddingRight = $properties['settings']['Padding']['right'];
