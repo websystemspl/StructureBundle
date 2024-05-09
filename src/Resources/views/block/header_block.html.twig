@@ -11,6 +11,7 @@
     {% if color != "" %} color: {{ color }}; {% endif %}
     {% if align != "" %} text-align: {{ align }}; {% endif %}
     {% if fontSize != "" %} font-size: {{ fontSize }}{{ fontSizeType }}; {% endif %}
+    {% if lineHeight != "" %} line-height: {{ lineHeight }}{{ lineHeightType }}; {% endif %}
 ">
     {{ content|default("")|raw }}
 </{{ style }}>

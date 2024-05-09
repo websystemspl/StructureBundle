@@ -25,6 +25,8 @@ class HeaderBlock extends Block implements BlockInterface
     private string $renderedHtml = '';
     private string $fontSize = '';
     private string $fontSizeType = '';    
+    private string $lineHeight = '';
+    private string $lineHeightType = '';       
     public function render(Environment $twig)
     {
         $this->renderedHtml = $twig->render('@Structure/block/header_block.html.twig', [
@@ -44,6 +46,8 @@ class HeaderBlock extends Block implements BlockInterface
             'style' => $this->style,    
             'fontSize' => $this->fontSize,
             'fontSizeType' => $this->fontSizeType, 
+            'lineHeight' => $this->lineHeight,
+            'lineHeightType' => $this->lineHeightType,            
         ]);
     }   
 
@@ -65,6 +69,8 @@ class HeaderBlock extends Block implements BlockInterface
         $this->style = $properties['style'];
         $this->fontSize = $properties['settings']['FontSize'];
         $this->fontSizeType = $properties['settings']['FontSizeType']['code'];
+        $this->lineHeight = $properties['settings']['LineHeight'];
+        $this->lineHeightType = $properties['settings']['LineHeightType']['code'];        
     }
 
     public function getUid(): ?string
@@ -179,5 +185,25 @@ class HeaderBlock extends Block implements BlockInterface
     public function getFontSizeType(): string
     {
         return $this->fontSizeType;
+    }
+
+    /**
+     * Get the value of lineHeight
+     *
+     * @return string
+     */
+    public function getLineHeight(): string
+    {
+        return $this->lineHeight;
+    }
+
+    /**
+     * Get the value of lineHeightType
+     *
+     * @return string
+     */
+    public function getLineHeightType(): string
+    {
+        return $this->lineHeightType;
     }
 }

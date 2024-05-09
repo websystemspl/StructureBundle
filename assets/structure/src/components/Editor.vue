@@ -34,6 +34,11 @@ const fontSizeTypes = ref([
     { name: '%', code: '%' },
 ]);
 
+const lineHeightTypes = ref([
+    { name: 'px', code: 'px' },
+    { name: 'rem', code: 'rem' },
+]);
+
 const widthTypes = ref([
     { name: 'px', code: 'px' },
     { name: '%', code: '%' },
@@ -295,7 +300,7 @@ provide('closeSettings', closeSettings);
                                                 </div>
                                             </div>
                                             <div class="s-sidebar__multi" v-else-if="index === 'FontSize'">
-                                                <label>{{ index }}</label>
+                                                <label>Font size</label>
                                                 <div class="s-sidebar__multi-inputs">
                                                     <div>
                                                         <InputNumber  showButtons v-model="settings.settings[index]" />
@@ -303,6 +308,19 @@ provide('closeSettings', closeSettings);
                                                     </div>
                                                     <div>
                                                         <Dropdown v-model="settings.settings['FontSizeType']" :options="fontSizeTypes" optionLabel="name" placeholder="" />
+                                                        <label></label>
+                                                    </div>                                            
+                                                </div>
+                                            </div>
+                                            <div class="s-sidebar__multi" v-else-if="index === 'LineHeight'">
+                                                <label>Line height</label>
+                                                <div class="s-sidebar__multi-inputs">
+                                                    <div>
+                                                        <InputNumber  showButtons v-model="settings.settings[index]" />
+                                                        <label></label>
+                                                    </div>
+                                                    <div>
+                                                        <Dropdown v-model="settings.settings['LineHeightType']" :options="lineHeightTypes" optionLabel="name" placeholder="" />
                                                         <label></label>
                                                     </div>                                            
                                                 </div>

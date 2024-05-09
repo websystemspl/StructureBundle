@@ -24,9 +24,12 @@ class TextBlock extends Block implements BlockInterface
     private string $renderedHtml = '';
     private string $fontSize = '';
     private string $fontSizeType = '';    
+    private string $lineHeight = '';
+    private string $lineHeightType = '';    
 
     public function resolveProperties(array $properties): void
     {
+        dump($properties);
         $this->uid = $properties['uid'];
         $this->paddingTop = $properties['settings']['Padding']['top'];
         $this->paddingRight = $properties['settings']['Padding']['right'];
@@ -42,6 +45,8 @@ class TextBlock extends Block implements BlockInterface
         $this->content = $properties['content'];
         $this->fontSize = $properties['settings']['FontSize'];
         $this->fontSizeType = $properties['settings']['FontSizeType']['code'];
+        $this->lineHeight = $properties['settings']['LineHeight'];
+        $this->lineHeightType = $properties['settings']['LineHeightType']['code'];
     }
 
     public function render(Environment $twig)
@@ -62,6 +67,8 @@ class TextBlock extends Block implements BlockInterface
             'align' => $this->align,
             'fontSize' => $this->fontSize,
             'fontSizeType' => $this->fontSizeType,
+            'lineHeight' => $this->lineHeight,
+            'lineHeightType' => $this->lineHeightType,
         ]);
     }
 
@@ -172,5 +179,25 @@ class TextBlock extends Block implements BlockInterface
     public function getFontSizeType(): string
     {
         return $this->fontSizeType;
+    }
+
+    /**
+     * Get the value of lineHeight
+     *
+     * @return string
+     */
+    public function getLineHeight(): string
+    {
+        return $this->lineHeight;
+    }
+
+    /**
+     * Get the value of lineHeightType
+     *
+     * @return string
+     */
+    public function getLineHeightType(): string
+    {
+        return $this->lineHeightType;
     }
 }
