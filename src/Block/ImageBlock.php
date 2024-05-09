@@ -9,19 +9,19 @@ use Websystems\StructureBundle\BlockInterface;
 class ImageBlock extends Block implements BlockInterface
 {
     private ?string $uid = null;
-    private string $paddingTop = "";
-    private string $paddingRight = "";
-    private string $paddingBottom = "";
-    private string $paddingLeft = "";
-    private string $marginTop = "";
-    private string $marginRight = "";
-    private string $marginBottom = "";
-    private string $marginLeft = "";
+    private ?string $paddingTop = "";
+    private ?string $paddingRight = "";
+    private ?string $paddingBottom = "";
+    private ?string $paddingLeft = "";
+    private ?string $marginTop = "";
+    private ?string $marginRight = "";
+    private ?string $marginBottom = "";
+    private ?string $marginLeft = "";
     private string $background = "";
     private string $align = 'left';
     private string $src = '';
     private string $renderedHtml = '';
-    private string $width = '';
+    private ?string $width = '';
     private string $widthType = '';
 
     public function resolveProperties(array $properties): void
@@ -67,42 +67,42 @@ class ImageBlock extends Block implements BlockInterface
         return $this->uid;
     }
 
-    public function getPaddingTop(): int
+    public function getPaddingTop(): ?string
     {
         return $this->paddingTop;
     }
 
-    public function getPaddingRight(): int
+    public function getPaddingRight(): ?string
     {
         return $this->paddingRight;
     }
 
-    public function getPaddingBottom(): int
+    public function getPaddingBottom(): ?string
     {
         return $this->paddingBottom;
     }
 
-    public function getPaddingLeft(): int
+    public function getPaddingLeft(): ?string
     {
         return $this->paddingLeft;
     }
 
-    public function getMarginTop(): int
+    public function getMarginTop(): ?string
     {
         return $this->marginTop;
     }
 
-    public function getMarginRight(): int
+    public function getMarginRight(): ?string
     {
         return $this->marginRight;
     }
 
-    public function getMarginBottom(): int
+    public function getMarginBottom(): ?string
     {
         return $this->marginBottom;
     }   
 
-    public function getMarginLeft(): int
+    public function getMarginLeft(): ?string
     {
         return $this->marginLeft;
     }
@@ -171,7 +171,7 @@ class ImageBlock extends Block implements BlockInterface
      *
      * @return string
      */
-    public function getWidth(): string
+    public function getWidth(): ?string
     {
         return $this->width;
     }

@@ -10,17 +10,16 @@ class ColumnBlock extends Block implements BlockInterface
 {
     private array $columns = [];
     private ?string $uid = null;
-    private string $paddingTop = "";
-    private string $paddingRight = "";
-    private string $paddingBottom = "";
-    private string $paddingLeft = "";
-    private string $marginTop = "";
-    private string $marginRight = "";
-    private string $marginBottom = "";
-    private string $marginLeft = "";
+    private ?string $paddingTop = "";
+    private ?string $paddingRight = "";
+    private ?string $paddingBottom = "";
+    private ?string $paddingLeft = "";
+    private ?string $marginTop = "";
+    private ?string $marginRight = "";
+    private ?string $marginBottom = "";
+    private ?string $marginLeft = "";
     private string $background = "";  
     private int $columnsCount = 1;
-    
     private string $alignVertical = "start";
     private string $renderedHtml = '';
     public function render(Environment $twig)
@@ -74,42 +73,42 @@ class ColumnBlock extends Block implements BlockInterface
         return $this->uid;
     }
 
-    public function getPaddingTop(): string
+    public function getPaddingTop(): ?string
     {
         return $this->paddingTop;
     }
 
-    public function getPaddingRight(): string
+    public function getPaddingRight(): ?string
     {
         return $this->paddingRight;
     }
 
-    public function getPaddingBottom(): string
+    public function getPaddingBottom(): ?string
     {
         return $this->paddingBottom;
     }
 
-    public function getPaddingLeft(): string
+    public function getPaddingLeft(): ?string
     {
         return $this->paddingLeft;
     }
 
-    public function getMarginTop(): string
+    public function getMarginTop(): ?string
     {
         return $this->marginTop;
     }
 
-    public function getMarginRight(): string
+    public function getMarginRight(): ?string
     {
         return $this->marginRight;
     }
 
-    public function getMarginBottom(): string
+    public function getMarginBottom(): ?string
     {
         return $this->marginBottom;
     }   
 
-    public function getMarginLeft(): string
+    public function getMarginLeft(): ?string
     {
         return $this->marginLeft;
     }    

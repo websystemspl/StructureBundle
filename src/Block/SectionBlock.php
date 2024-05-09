@@ -10,14 +10,14 @@ class SectionBlock extends Block implements BlockInterface
 {
     private array $blocks = [];
     private ?string $uid = null;
-    private string $paddingTop = "";
-    private string $paddingRight = "";
-    private string $paddingBottom = "";
-    private string $paddingLeft = "";
-    private string $marginTop = "";
-    private string $marginRight = "";
-    private string $marginBottom = "";
-    private string $marginLeft = "";
+    private ?string $paddingTop = "";
+    private ?string $paddingRight = "";
+    private ?string $paddingBottom = "";
+    private ?string $paddingLeft = "";
+    private ?string $marginTop = "";
+    private ?string $marginRight = "";
+    private ?string $marginBottom = "";
+    private ?string $marginLeft = "";
     private string $background = "";    
     private bool $container = false;
     private string $renderedHtml = '';
@@ -70,42 +70,42 @@ class SectionBlock extends Block implements BlockInterface
         return $this->uid;
     }
 
-    public function getPaddingTop(): int
+    public function getPaddingTop(): ?string
     {
         return $this->paddingTop;
     }
 
-    public function getPaddingRight(): int
+    public function getPaddingRight(): ?string
     {
         return $this->paddingRight;
     }
 
-    public function getPaddingBottom(): int
+    public function getPaddingBottom(): ?string
     {
         return $this->paddingBottom;
     }
 
-    public function getPaddingLeft(): int
+    public function getPaddingLeft(): ?string
     {
         return $this->paddingLeft;
     }
 
-    public function getMarginTop(): int
+    public function getMarginTop(): ?string
     {
         return $this->marginTop;
     }
 
-    public function getMarginRight(): int
+    public function getMarginRight(): ?string
     {
         return $this->marginRight;
     }
 
-    public function getMarginBottom(): int
+    public function getMarginBottom(): ?string
     {
         return $this->marginBottom;
     }
 
-    public function getMarginLeft(): int
+    public function getMarginLeft(): ?string
     {
         return $this->marginLeft;
     }   
