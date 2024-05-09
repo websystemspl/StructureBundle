@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, inject } from 'vue';
 import contenteditable from 'vue-contenteditable'
 
 let props = defineProps({
@@ -9,10 +9,11 @@ let props = defineProps({
   },
 });
 
+const openSettings = inject('openSettings');
 </script>
 
 <template>
-    <div class="text-block">
+    <div class="text-block" @click="openSettings(props.elementData)">
         <contenteditable :style="[
         'padding-top:'+props.elementData.settings.Padding.top+'px;',
         'padding-right:'+props.elementData.settings.Padding.right+'px;',

@@ -2,8 +2,10 @@
 import { defineProps, ref, inject } from 'vue';
 import draggable from "vuedraggable";
 import { contentStore } from './../store/content.js'
+import WidgetActions from './../components/WidgetActions.vue'
 
 const openSettings = inject('openSettings');
+const closeSettings = inject('closeSettings');
 
 const props = defineProps({
   elementData: {
@@ -15,7 +17,8 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="section-block" :style="[
+    <div class="section-block" 
+    :style="[
         'padding-top:'+props.elementData.settings.Padding.top+'px;',
         'padding-right:'+props.elementData.settings.Padding.right+'px;',
         'padding-bottom:'+props.elementData.settings.Padding.bottom+'px;',
@@ -38,13 +41,8 @@ const props = defineProps({
               itemKey="uid"
           >
               <template #item="{ element }">
-                    <div class="active-widget">
-                      <div class="active-widget__actions">
-                          <div class="active-widget__drag"><i class="bi bi-grip-horizontal"></i></div>
-                          <button type="button" class="s-button s-button--transparent" @click="openSettings(element)"><i class="bi bi-gear-fill"></i></button>
-                          <button type="button" class="s-button s-button--transparent"><i class="bi bi-copy"></i></button>
-                          <button type="button" class="s-button s-button--transparent" @click="contentStore.removeElement(element.uid)"><i class="bi bi-x-lg"></i></button>
-                      </div>
+                  <div class="active-widget">
+                    <WidgetActions :elementData="element"></WidgetActions>
                     <component :elementData="element" :is="contentStore.createBlock(element.component)"></component>    
                   </div>
               </template>

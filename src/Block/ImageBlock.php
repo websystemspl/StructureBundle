@@ -21,6 +21,8 @@ class ImageBlock extends Block implements BlockInterface
     private string $align = 'left';
     private string $src = '';
     private string $renderedHtml = '';
+    private string $width = '';
+    private string $widthType = '';
 
     public function resolveProperties(array $properties): void
     {
@@ -35,6 +37,8 @@ class ImageBlock extends Block implements BlockInterface
         $this->marginLeft = $properties['settings']['Margin']['left'];
         $this->background = $properties['settings']['Background'];
         $this->align = $properties['settings']['Align'];
+        $this->width = $properties['settings']['Width'];
+        $this->widthType = $properties['settings']['WidthType'];
         $this->src = $properties['src'];
     }
 
@@ -53,6 +57,8 @@ class ImageBlock extends Block implements BlockInterface
             'marginLeft' => $this->marginLeft,
             'background' => $this->background,
             'align' => $this->align,
+            'width' => $this->width,
+            'widthType' => $this->widthType,
         ]);
     }
 
@@ -158,5 +164,25 @@ class ImageBlock extends Block implements BlockInterface
         $this->src = $src;
 
         return $this;
+    }
+
+    /**
+     * Get the value of width
+     *
+     * @return string
+     */
+    public function getWidth(): string
+    {
+        return $this->width;
+    }
+
+    /**
+     * Get the value of widthType
+     *
+     * @return string
+     */
+    public function getWidthType(): string
+    {
+        return $this->widthType;
     }
 }

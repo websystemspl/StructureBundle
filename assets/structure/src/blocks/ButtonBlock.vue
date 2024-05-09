@@ -11,7 +11,14 @@ let props = defineProps({
 </script>
 
 <template>
-    <div class="button-block" :style="[
+    <div class="button-block" 
+      :style="[
+          'text-align:'+props.elementData.settings.Align+';',
+        ]
+      "    
+    >
+        <a
+        :style="[
         'padding-top:'+props.elementData.settings.Padding.top+'px;',
         'padding-right:'+props.elementData.settings.Padding.right+'px;',
         'padding-bottom:'+props.elementData.settings.Padding.bottom+'px;',
@@ -22,11 +29,10 @@ let props = defineProps({
         'margin-left:'+props.elementData.settings.Margin.left+'px;',
         'background-color:'+props.elementData.settings.Background+';',
         'color:'+props.elementData.settings.Color+';',
-        'text-align:'+props.elementData.settings.Align+';',
-        'max-width:'+(props.elementData.settings.Container ? '1140px; margin: auto;' : '100%;'),
         (props.elementData.settings.FontSize) ? 'font-size:'+props.elementData.settings.FontSize+props.elementData.settings.FontSizeType.code+';' : '',
       ]
-    ">
-        <a :href="props.elementData.link" :target="props.elementData.target" :class="props.elementData.buttonclass" :title="props.elementData.label">{{ props.elementData.label }}</a>
+    "        
+        
+        :href="props.elementData.link" :target="props.elementData.target" :class="props.elementData.buttonclass" :title="props.elementData.label">{{ props.elementData.label }}</a>
     </div>
 </template>

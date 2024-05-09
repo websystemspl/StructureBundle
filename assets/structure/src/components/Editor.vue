@@ -3,6 +3,7 @@ import draggable from "vuedraggable";
 import { defineEmits, ref, provide, inject } from 'vue';
 import { widgetStore } from './../store/widgets.js'
 import { contentStore } from './../store/content.js'
+import WidgetActions from './WidgetActions.vue'
 import MediaModal from './MediaModal.vue'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import '@vueup/vue-quill/dist/vue-quill.bubble.css';
@@ -15,8 +16,8 @@ import Moveable from "vue3-moveable";
 import InputText from 'primevue/inputtext';
 import Image from 'primevue/image';
 import Dropdown from 'primevue/dropdown';
-
-defineEmits(['close']);
+import Slider from 'primevue/slider';
+import InputNumber from 'primevue/inputnumber';
 
 const settings = ref(null);
 const showMediaModal = ref(false);
@@ -33,9 +34,26 @@ const fontSizeTypes = ref([
     { name: '%', code: '%' },
 ]);
 
+const widthTypes = ref([
+    { name: 'px', code: 'px' },
+    { name: '%', code: '%' },
+]);
+
 function openSettings(element)
 {
     settings.value = element;
+}
+
+function closeSettings(element)
+{
+    if(settings.value && settings.value.uid === element.uid) {
+        settings.value = null;
+    }
+}
+
+function closeAllSettings()
+{
+    settings.value = null;
 }
 
 function openMedia(object)
@@ -62,8 +80,9 @@ function saveData()
         saveLoading.value = false;
     });
 }
-
+defineEmits(['close']);
 provide('openSettings', openSettings);
+provide('closeSettings', closeSettings);
 </script>
 
 <style>
@@ -132,9 +151,10 @@ provide('openSettings', openSettings);
                                         <div v-if="settings.hasOwnProperty('columnsCount')" class="s-sidebar__setting">
                                             <div class="s-sidebar__single">
                                                 <label>Columns</label>
-                                                <InputText min="1" max="12" type="number" v-model="settings.columnsCount" />
+                                                <InputNumber showButtons :min="1" :max="12" v-model="settings.columnsCount" />
                                             </div>
                                         </div>
+
                                         <div v-if="settings.hasOwnProperty('block')" class="s-sidebar__setting">
                                             <div class="s-sidebar__single">
                                                 <label>Widgets</label>
@@ -183,25 +203,25 @@ provide('openSettings', openSettings);
                                         <div v-if="settings.hasOwnProperty('label')" class="s-sidebar__setting">
                                             <div class="s-sidebar__single">
                                                 <label>Label</label>
-                                                <input type="text" v-model="settings.label" />
+                                                <InputText type="text" v-model="settings.label" />
                                             </div>
                                         </div>                                
                                         <div v-if="settings.hasOwnProperty('link')" class="s-sidebar__setting">
                                             <div class="s-sidebar__single">
                                                 <label>Link</label>
-                                                <input type="text" v-model="settings.link" />
+                                                <InputText type="text" v-model="settings.link" />
                                             </div>
                                         </div>                                
                                         <div v-if="settings.hasOwnProperty('target')" class="s-sidebar__setting">
                                             <div class="s-sidebar__single">
                                                 <label>Target</label>
-                                                <input type="text" v-model="settings.target" />
+                                                <InputText type="text" v-model="settings.target" />
                                             </div>
                                         </div>                                
                                         <div v-if="settings.hasOwnProperty('buttonclass')" class="s-sidebar__setting">
                                             <div class="s-sidebar__single">
                                                 <label>Class</label>
-                                                <input type="text" v-model="settings.buttonclass" />
+                                                <InputText type="text" v-model="settings.buttonclass" />
                                             </div>
                                         </div>                                
                                         <div v-if="settings.hasOwnProperty('code')" class="s-sidebar__setting">
@@ -217,19 +237,19 @@ provide('openSettings', openSettings);
                                                 <label>{{ index }}</label>
                                                 <div class="s-sidebar__multi-inputs">
                                                     <div>
-                                                        <InputText type="number" v-model="settings.settings[index].top" />
+                                                        <InputNumber  buttonLayout="vertical" showButtons v-model="settings.settings[index].top" />
                                                         <label>Top</label>
                                                     </div>
                                                     <div>
-                                                        <InputText type="number" v-model="settings.settings[index].right" />
+                                                        <InputNumber  buttonLayout="vertical" showButtons v-model="settings.settings[index].right" />
                                                         <label>Right</label>
                                                     </div>
                                                     <div>
-                                                        <InputText type="number" v-model="settings.settings[index].bottom" />
+                                                        <InputNumber  buttonLayout="vertical" showButtons v-model="settings.settings[index].bottom" />
                                                         <label>Bottom</label>
                                                     </div>
                                                     <div>
-                                                        <InputText type="number" v-model="settings.settings[index].left" />
+                                                        <InputNumber  buttonLayout="vertical" showButtons v-model="settings.settings[index].left" />
                                                         <label>Left</label>
                                                     </div>
                                                 </div>
@@ -243,6 +263,20 @@ provide('openSettings', openSettings);
                                                     </div>
                                                     <div>
                                                         <InputText style="width: 50px;" type="color" v-model="settings.settings[index]" />
+                                                        <label></label>
+                                                    </div>                                            
+                                                </div>
+                                            </div>
+                                            <div class="s-sidebar__multi" v-else-if="index === 'Width'">
+                                                <label>{{ index }}</label>
+                                                <div class="s-sidebar__multi-inputs">
+                                                    <div>
+                                                        <InputText v-model.number="settings.settings[index]" />
+                                                        <Slider v-model="settings.settings[index]" :max="(settings.settings['WidthType'].code === 'px') ? 2560 : 100" />
+                                                        <label></label>
+                                                    </div>
+                                                    <div>
+                                                        <Dropdown v-model="settings.settings['WidthType']" :options="widthTypes" optionLabel="name" placeholder="" />
                                                         <label></label>
                                                     </div>                                            
                                                 </div>
@@ -264,7 +298,7 @@ provide('openSettings', openSettings);
                                                 <label>{{ index }}</label>
                                                 <div class="s-sidebar__multi-inputs">
                                                     <div>
-                                                        <InputText type="number" v-model="settings.settings[index]" />
+                                                        <InputNumber  showButtons v-model="settings.settings[index]" />
                                                         <label></label>
                                                     </div>
                                                     <div>
@@ -309,9 +343,6 @@ provide('openSettings', openSettings);
                 :origin="false"
                 @resize="onResize"
             />
-
-
-
             <div class="editor__column editor__column--right" ref="editor_column">
                 <PerfectScrollbar>
                     <div style="margin: 20px 0;">
@@ -324,12 +355,7 @@ provide('openSettings', openSettings);
                     >
                         <template #item="{ element }">
                             <div class="active-widget">
-                                <div class="active-widget__actions">
-                                    <div class="active-widget__drag"><i class="bi bi-grip-horizontal"></i></div>
-                                    <button type="button" class="s-button s-button--transparent" @click="openSettings(element)"><i class="bi bi-gear-fill"></i></button>
-                                    <button type="button" class="s-button s-button--transparent" @click="contentStore.findAndDuplicateByUID(element.uid)"><i class="bi bi-copy"></i></button>
-                                    <button type="button" class="s-button s-button--transparent" @click="contentStore.removeElement(element.uid)"><i class="bi bi-x-lg"></i></button>
-                                </div>
+                                <WidgetActions :elementData="element" />
                                 <component :elementData="element" :is="contentStore.createBlock(element.component)"></component>   
                             </div>
                         </template>

@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref } from 'vue';
+import { defineProps } from 'vue';
 
 let props = defineProps({
   elementData: {
@@ -22,10 +22,9 @@ let props = defineProps({
         'background-color:'+props.elementData.settings.Background+';',
         'color:'+props.elementData.settings.Color+';',
         'text-align:'+props.elementData.settings.Align+';',
-        'max-width:'+(props.elementData.settings.Container ? '1140px; margin: auto;' : '100%;'),
         (props.elementData.settings.FontSize) ? 'font-size:'+props.elementData.settings.FontSize+props.elementData.settings.FontSizeType.code+';' : '',
       ]
     ">
-  <img :src="props.elementData.src" style="max-width: 100%;">
+  <img :src="props.elementData.src" :style="[(props.elementData.settings.Width) ? 'max-width:'+props.elementData.settings.Width+props.elementData.settings.WidthType.code+';' : '']">
 </div>
 </template>
