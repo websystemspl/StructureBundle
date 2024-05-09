@@ -38,7 +38,7 @@ class ImageBlock extends Block implements BlockInterface
         $this->background = $properties['settings']['Background'];
         $this->align = $properties['settings']['Align'];
         $this->width = $properties['settings']['Width'];
-        $this->widthType = $properties['settings']['WidthType'];
+        $this->widthType = $properties['settings']['WidthType']['code'];
         $this->src = $properties['src'];
     }
 
