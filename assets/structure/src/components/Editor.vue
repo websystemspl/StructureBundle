@@ -26,6 +26,11 @@ import Tab from 'primevue/tab';
 import TabPanels from 'primevue/tabpanels';
 import TabPanel from 'primevue/tabpanel';
 
+import Accordion from 'primevue/accordion';
+import AccordionPanel from 'primevue/accordionpanel';
+import AccordionHeader from 'primevue/accordionheader';
+import AccordionContent from 'primevue/accordioncontent';
+
 const settings = ref(null);
 const showMediaModal = ref(false);
 const mediaModalElementData = ref(null);
@@ -58,13 +63,6 @@ function openSettings(element)
 }
 
 function closeSettings(element)
-{
-    if(settings.value && settings.value.uid === element.uid) {
-        settings.value = null;
-    }
-}
-
-function closeAllSettings()
 {
     settings.value = null;
 }
@@ -172,7 +170,16 @@ provide('closeSettings', closeSettings);
                                                     <InputNumber showButtons :min="1" :max="12" v-model="settings.columnsCount" />
                                                 </div>
                                             </div>
-
+                                            <div v-if="settings.hasOwnProperty('alignVertical')" class="s-sidebar__setting">
+                                                <div class="s-sidebar__multi">
+                                                    <label>Vertical align</label>
+                                                    <div class="s-sidebar__multi-inputs">
+                                                        <Button icon="bi-align-top" @click="settings.alignVertical = 'start'" severity="contrast" text  />
+                                                        <Button icon="bi-align-center" @click="settings.alignVertical = 'center'" severity="contrast" text  />
+                                                        <Button icon="bi-align-bottom" @click="settings.alignVertical = 'end'" severity="contrast" text  />
+                                                    </div>
+                                                </div>
+                                            </div>                                            
                                             <div v-if="settings.hasOwnProperty('block')" class="s-sidebar__setting">
                                                 <div class="s-sidebar__single">
                                                     <label>Widgets</label>
@@ -190,16 +197,6 @@ provide('closeSettings', closeSettings);
                                                         <Button icon="bi bi-type-h3" @click="settings.style = 'h3'" text severity="contrast" />
                                                         <Button icon="bi bi-type-h4" @click="settings.style = 'h4'" text severity="contrast" />
                                                         <Button icon="bi bi-type-h5" @click="settings.style = 'h5'" text severity="contrast" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div v-if="settings.hasOwnProperty('alignVertical')" class="s-sidebar__setting">
-                                                <div class="s-sidebar__multi">
-                                                    <label>Vertical align</label>
-                                                    <div class="s-sidebar__multi-inputs">
-                                                        <Button icon="bi-align-top" @click="settings.alignVertical = 'start'" severity="contrast" text  />
-                                                        <Button icon="bi-align-center" @click="settings.alignVertical = 'center'" severity="contrast" text  />
-                                                        <Button icon="bi-align-bottom" @click="settings.alignVertical = 'end'" severity="contrast" text  />
                                                     </div>
                                                 </div>
                                             </div>
@@ -378,20 +375,20 @@ provide('closeSettings', closeSettings);
             <div class="editor__column editor__column--right" ref="editor_column">
                 <PerfectScrollbar>
                     <div style="margin: 20px 0;">
-                    <draggable
-                        class="drag-area"
-                        :list="contentStore.content"
-                        group="containers"
-                        itemKey="uid"
-                        handle=".active-widget__drag"
-                    >
-                        <template #item="{ element }">
-                            <div class="active-widget">
-                                <WidgetActions :elementData="element" />
-                                <component :elementData="element" :is="contentStore.createBlock(element.component)"></component>   
-                            </div>
-                        </template>
-                    </draggable>
+                        <draggable
+                            class="drag-area"
+                            :list="contentStore.content"
+                            group="containers"
+                            itemKey="uid"
+                            handle=".active-widget__drag"
+                        >
+                            <template #item="{ element }">
+                                <div class="active-widget">
+                                    <WidgetActions :elementData="element" />
+                                    <component :elementData="element" :is="contentStore.createBlock(element.component)"></component>   
+                                </div>
+                            </template>
+                        </draggable>
                     </div>
                 </PerfectScrollbar>
             </div>

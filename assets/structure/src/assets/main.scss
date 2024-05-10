@@ -63,14 +63,13 @@
 }
 
 .drag-area:empty:before {
-    content: "\F64D";
-    font-family: "Bootstrap-icons";
-    font-weight: 900;
-    color: var(--border-dashed);
+    content: "Drop block here";
+    font-weight: 400;
+    color: #ccc;
 }
 
 .active-widget {
-    padding: 0px;
+    padding: 10px;
     border: 1px transparent solid;
     position: relative;
     color: #000;
@@ -104,6 +103,14 @@
         padding: 6px 10px;
         color: white;
         width: fit-content;
+
+        &--has-parent {
+            top: 0px;
+            right: 0px;
+            left: auto;
+            border-top-left-radius: 0px !important;
+            border-top-right-radius: 0px !important;
+        }        
     }
 }
 

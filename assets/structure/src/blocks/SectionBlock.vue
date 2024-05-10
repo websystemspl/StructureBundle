@@ -42,7 +42,7 @@ const props = defineProps({
           >
               <template #item="{ element }">
                   <div class="active-widget">
-                    <WidgetActions :elementData="element"></WidgetActions>
+                    <WidgetActions :elementData="element" :has-parent="true"></WidgetActions>
                     <component :elementData="element" :is="contentStore.createBlock(element.component)"></component>    
                   </div>
               </template>

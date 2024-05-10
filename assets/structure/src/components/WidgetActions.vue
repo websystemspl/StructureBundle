@@ -1,5 +1,5 @@
 <template>
-    <div class="active-widget__actions">
+    <div :class="['active-widget__actions', (props.hasParent ? 'active-widget__actions--has-parent' : '')]">
         <div class="active-widget__drag"><i class="bi bi-grip-horizontal"></i></div>
         <button type="button" class="s-button s-button--transparent" @click="openSettings(props.elementData)"><i class="bi bi-gear-fill"></i></button>
         <button type="button" class="s-button s-button--transparent" @click="contentStore.findAndDuplicateByUID(props.elementData.uid)"><i class="bi bi-copy"></i></button>
@@ -16,6 +16,10 @@ const props = defineProps({
     elementData: {
         type: Object,
         default: null,
+    },
+    hasParent: {
+        type: Boolean,
+        default: false,
     },
 });
 

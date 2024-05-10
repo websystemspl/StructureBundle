@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref } from 'vue';
+import { defineProps, ref, watch } from 'vue';
 import draggable from "vuedraggable";
 import { contentStore } from './../store/content.js'
 import WidgetActions from './../components/WidgetActions.vue'
@@ -15,6 +15,16 @@ const props = defineProps({
 for (let i = 0; i < props.elementData.columnsCount; i++) {
   props.elementData.columns.push([]);
 }
+
+watch(() => props.elementData.columnsCount, (newVal) => {
+  for (let i = 0; i < newVal; i++) {
+    props.elementData.columns.push([]);
+  }
+
+  if (props.elementData.columns.length > newVal) {
+    props.elementData.columns.splice(newVal);
+  }
+});
 
 </script>
 
@@ -46,7 +56,7 @@ for (let i = 0; i < props.elementData.columnsCount; i++) {
           >
               <template #item="{ element }">
                     <div class="active-widget">
-                      <WidgetActions :elementData="element"></WidgetActions>
+                      <WidgetActions :elementData="element" :has-parent="true"></WidgetActions>
                       <component :elementData="element" :is="contentStore.createBlock(element.component)"></component>   
                   </div>
               </template>

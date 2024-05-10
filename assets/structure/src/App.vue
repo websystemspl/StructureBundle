@@ -40,7 +40,7 @@ const startApp = () => {
   setTimeout(() => {
     isLoading.value = false
     showEditor.value = true;
-  }, 2000)
+  }, 0)
 }
 
 provide('mediaEndpoint', props.media);
