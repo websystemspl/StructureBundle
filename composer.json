@@ -2,7 +2,7 @@
     "name": "websystems/structure-bundle",
     "description": "Page Builder for Symfony",
     "type": "symfony-bundle",
-    "version": "0.0.25",
+    "version": "0.0.26",
     "license": "MIT",
     "autoload": {
         "psr-4": {
