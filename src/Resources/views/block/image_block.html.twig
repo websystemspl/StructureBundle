@@ -1,4 +1,7 @@
-<img src="{{ src }}" class="s-image-block {{ uid }}" style="
+<div class="s-image-block {{ uid }}" style="
+    {% if align != "" %} text-align: {{ align }}; {% endif %}
+">
+<img src="{{ src }}" style="
     {% if paddingTop != "" %} padding-top: {{ paddingTop }}px; {% endif %}
     {% if paddingRight != "" %} padding-right: {{ paddingRight }}px; {% endif %}
     {% if paddingBottom != "" %} padding-bottom: {{ paddingBottom }}px; {% endif %}
@@ -8,6 +11,6 @@
     {% if marginBottom != "" %} margin-bottom: {{ marginBottom }}px; {% endif %}
     {% if marginLeft != "" %} margin-left: {{ marginLeft }}px; {% endif %}
     {% if background != "" %} background-color: {{ background }}; {% endif %}
-    {% if align != "" %} text-align: {{ align }}; {% endif %}
     {% if width != "" %} max-width: {{ width }}{{ widthType }}; {% endif %}
 " />
+</div>
